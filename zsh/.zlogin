@@ -1,0 +1,2 @@
+fastfetch -l macos2
+

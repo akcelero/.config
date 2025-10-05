@@ -1,0 +1,68 @@
+version = 3
+final_space = true
+
+[upgrade]
+    source = 'cdn'
+    interval = '168h'
+    auto = false
+    notice = false
+
+[[blocks]]
+    type = 'prompt'
+    alignment = 'left'
+
+    [[blocks.segments]]
+        type = "path"
+        style = "plain"
+        foreground = "cyan"
+        background = ""
+        template = "<b>{{ .Path }}</> "
+        [blocks.segments.properties]
+            style = "full"
+
+    [[blocks.segments]]
+        type = "git"
+        style = "plain"
+        foreground = "blue"
+        background = ""
+        template = "<b>({{.HEAD}}{{if or .Working.Changed .Staging.Changed}}<red>✘</>{{end}}{{if gt .Behind 2}} ⇣{{end}}{{if gt .Ahead 0}} ⇡{{end}} <white> {{ .StashCount }}</>)</> "
+
+        [blocks.segments.properties]
+            branch_icon = ""
+            commit_icon = "@"
+            fetch_status = true
+
+    [[blocks.segments]]
+        type = "status"
+        style = "plain"
+        foreground = "#00FF00"
+        foreground_templates = ["{{ if gt .Code 0 }}#FF0000{{ end }}"]
+        template = "➜"
+
+        [blocks.segments.properties]
+            always_enabled = true
+
+[[blocks]]
+    type = 'rprompt'
+    overflow = 'hidden'
+
+    [[blocks.segments]]
+        type = 'executiontime'
+        style = 'plain'
+        foreground = 'yellow'
+        template = '{{ .FormattedMs }}'
+
+        [blocks.segments.properties]
+            always_enabled = true
+
+    [[blocks.segments]]
+        type = "python"
+        style = "plain"
+        foreground = "yellow"
+        template = "  {{ .Full }}"
+
+    [[blocks.segments]]
+        type = "go"
+        style = "plain"
+        foreground = "yellow"
+        template = "  {{ .Full }} "

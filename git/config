@@ -1,0 +1,54 @@
+[user]
+    name = akcelero
+    email = akcelero@gmail.com
+    signingkey = /Users/akcelero/.ssh/id_ed25519.pub
+
+[core]
+    compression =   9
+    whitespace =    error
+    preloadindex =  true
+    excludesfile =  /Users/akcelero/.config/git/gitignore
+
+[init]
+    defaultBranch = master
+
+[status]
+    showStash =     true
+
+[diff]
+    interHunkContext = 10
+
+[push]
+    autoSetupRemote =   true
+    default =           current
+
+[pull]
+    default =   current
+    rebase =    true
+
+[rebase]
+    autoStash = true
+    autoSquash = true
+    updateRefs = true
+
+[rerere]
+    enabled = true
+    autoupdate = true
+
+[log]
+    abbrevCommit = true
+
+[branch]
+    sort = -committerdate
+
+[commit]
+    gpgSign = true
+    template = ~/.config/git/commit-template.txt
+
+[gpg]
+    format = ssh
+
+[maintenance]
+    auto = false
+    strategy = incremental
+

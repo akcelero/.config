@@ -1,0 +1,24 @@
+#🙈 wip: SQUASH ME!!!
+#✨ feat:
+#🐛 fix:
+#📝 docs:
+#🎨 style:
+#🔨 refactor:
+#🚀 perf:
+#✅ test:
+#🧹 chore:
+#⏪ revert:
+#🔒 security:
+#📦 deps:
+
+#✨ feat:     New features or significant changes
+#🐛 fix:      Bug fixes and patches
+#📝 docs:     Documentation only changes
+#🎨 style:    Formatting, missing semi colons, etc. (no code change)
+#🔨 refactor: Code changes that neither fix a bug nor add a feature
+#🚀 perf:     Performance improvements
+#✅ test:     Adding or updating tests
+#🧹 chore:    Build process, CI, or other non-production code
+#⏪ revert:   Reverting previous commits
+#🔒 security: Security-related fixes or improvements
+#📦 deps:     Dependency updates (add/remove/update)
