@@ -1,4 +1,4 @@
 --theme="TwoDark"
---paging="always"
---pager="less --RAW-CONTROL-CHARS --mouse"
+#--paging="always"
+#--pager="less --RAW-CONTROL-CHARS --mouse"
 

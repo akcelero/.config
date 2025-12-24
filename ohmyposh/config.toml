@@ -61,8 +61,3 @@ final_space = true
         foreground = "yellow"
         template = "  {{ .Full }}"
 
-    [[blocks.segments]]
-        type = "go"
-        style = "plain"
-        foreground = "yellow"
-        template = "  {{ .Full }} "

@@ -4,27 +4,31 @@
     signingkey = /Users/akcelero/.ssh/id_ed25519.pub
 
 [core]
-    compression =   9
-    whitespace =    error
-    preloadindex =  true
-    excludesfile =  /Users/akcelero/.config/git/gitignore
+    compression = 9
+    whitespace = error
+    preloadindex = true
+    excludesfile = /Users/akcelero/.config/git/gitignore
 
 [init]
     defaultBranch = master
 
 [status]
-    showStash =     true
+    showStash = true
 
 [diff]
+    algorithm = histogram
     interHunkContext = 10
 
 [push]
-    autoSetupRemote =   true
-    default =           current
+    autoSetupRemote = true
+    default = current
 
 [pull]
-    default =   current
-    rebase =    true
+    default = current
+    rebase =  true
+
+[fetch]
+    prune = true
 
 [rebase]
     autoStash = true
