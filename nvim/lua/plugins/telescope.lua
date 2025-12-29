@@ -27,6 +27,24 @@ return {
 				end,
 				desc = "Buffers",
 			},
+			{
+				"<leader>fp",
+				function()
+					require("telescope.builtin").persisted()
+				end,
+				desc = "Persisted sessions",
+			},
+			{
+				"<leader>fh",
+				function()
+					require("telescope.builtin").help_tags()
+				end,
+				desc = "Persisted sessions",
+			},
+			--
+			--             local builtin = require('telescope.builtin')
+			-- vim.keymap.set('n', '<leader>th', builtin.help_tags, { desc = 'Neovim help tags' })
+			-- vim.keymap.set('n', '<leader>tl', function() builtin.help_tags({ search = 'lua' }) end, { desc = 'Lua API help' })
 		},
 		opts = {
 			defaults = {
@@ -83,6 +101,9 @@ return {
 				},
 				file_browser = {
 					theme = "ivy",
+				},
+				persisted = {
+					layout_config = { width = 0.55, height = 0.55 },
 				},
 			},
 		},
