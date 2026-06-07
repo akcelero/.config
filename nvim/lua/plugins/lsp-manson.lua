@@ -16,7 +16,8 @@ return {
 		})
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				"pyright",
+				"ty",
+				"ruff",
 				"lua_ls",
 				"gopls",
 				"bashls",
@@ -60,9 +61,10 @@ return {
 			capabilities = require("blink.cmp").get_lsp_capabilities(),
 		})
 
-		vim.lsp.enable("pyright")
 		vim.lsp.enable("lua_ls")
 		vim.lsp.enable("gopls")
 		vim.lsp.enable("bashls")
+		vim.lsp.enable("ty")
+		vim.lsp.enable("ruff")
 	end,
 }

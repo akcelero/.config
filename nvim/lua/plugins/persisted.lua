@@ -8,7 +8,7 @@ return {
 				enabled = true,
 				notify = false,
 			},
-			autoload = true,
+			autoload = false,
 			on_autoload_no_session = function()
 				vim.notify("No session to load", vim.log.levels.INFO)
 			end,

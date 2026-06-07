@@ -1,17 +1,17 @@
 # Core
 shell-integration = zsh
-theme = "Earthsong"
+theme = Earthsong
 
 # Appearance
-macos-titlebar-style = "transparent"
+macos-titlebar-style = transparent
 background-opacity = 0.85
 background-blur-radius = 10
-window-padding-x = 5
-window-padding-y = 5
 
 # Window behavior
 window-height = 50
 window-width = 140
+window-padding-x = 5
+window-padding-y = 5
 window-save-state = always
 working-directory = home
 confirm-close-surface = false
@@ -19,7 +19,7 @@ confirm-close-surface = false
 # Font
 font-size = 15
 font-feature = -calt
-font-family = "JetBrainsMono Nerd Font"
+font-family = JetBrainsMono Nerd Font
 
 # Quick terminal
 quick-terminal-screen = mouse
@@ -32,5 +32,5 @@ quick-terminal-animation-duration = 0.15
 keybind = global:command+grave_accent=toggle_quick_terminal
 
 # Shaders
-custom-shader = "~/.config/ghostty/shaders/cursor_frozen.glsl"
+custom-shader = ~/.config/ghostty/shaders/cursor_frozen.glsl
 

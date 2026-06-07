@@ -1,4 +1,3 @@
-#!/usr/bin/env zsh
 # zmodload zsh/zprof
 # =============================================================================
 # HISTORY CONFIGURATION
@@ -14,6 +13,7 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+setopt extended_glob
 
 # =============================================================================
 # SHELL OPTIONS
@@ -56,13 +56,11 @@ alias ghosttyconfig='nvim ${XDG_CONFIG_HOME}/ghostty/config'
 alias reload='source ${XDG_CONFIG_HOME}/zsh/.zshrc'
 
 # =============================================================================
-# EXTERNAL TOOL INITIALIZATION
-# =============================================================================
-eval "$(fzf --zsh)"
-
-# =============================================================================
 # PLUGINS
 # =============================================================================
+fpath=( ${HOME}/.local/share/mise/installs/python/*/lib/python*/site-packages/argcomplete/bash_completion.d(N) "${fpath[@]}" )
+fpath=( /opt/homebrew/share/zsh/site-functions "${fpath[@]}" )
+
 ZINIT_HOME="${XDG_DATA_HOME}/zinit/zinit.git"
 # UNCOMMENT WHEN NEEDED
 # mkdir -p "$(dirname $ZINIT_HOME)"
@@ -75,28 +73,32 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 zinit ice turbo
 zinit light Aloxaf/fzf-tab
 
-zinit ice turbo from"gh-r" as"completion" pick"*/*.zsh" atload"compinit -C -d ${XDG_CACHE_HOME}/zsh/.zcompdump"
+zinit ice wait lucid blockf
 zinit light zsh-users/zsh-completions
 
 # Oh My Zsh snippets (lazy loaded)
 zinit wait lucid for \
     OMZL::git.zsh \
     OMZP::aws \
-    OMZP::aliases \
     OMZP::command-not-found \
     OMZP::git \
     OMZP::golang \
     OMZP::kubectl \
     OMZP::kubectx \
-    OMZP::sudo \
     OMZP::uv
 
-# =============================================================================
-# COMPLETION SYSTEM
-# =============================================================================
 autoload -Uz compinit
-compinit -u -C -d "${XDG_CACHE_HOME}/zsh/.zcompdump"
 _comp_options+=(globdots)
+
+# check if file modified more than 24h ago
+if [[ -n ${XDG_CACHE_HOME}/zsh/.zcompdump(#qN.mh+24) ]]; then
+    compinit -d "${XDG_CACHE_HOME}/zsh/.zcompdump"
+else
+    compinit -C -d "${XDG_CACHE_HOME}/zsh/.zcompdump"
+fi
+
+autoload -Uz bashcompinit
+bashcompinit
 zinit cdreplay -q
 
 # Completion styling
@@ -113,17 +115,19 @@ zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
 
 # =============================================================================
-# SECRETS AND PRIVATE CONFIGURATION
+# SECRETS CONFIGURATION
 # =============================================================================
 [[ -f "${XDG_CONFIG_HOME}/zsh/.zshenv_secrets" ]] && source "${XDG_CONFIG_HOME}/zsh/.zshenv_secrets"
 
 # =============================================================================
-# PROMPT INITIALIZATION (KEEP LAST)
+# EXTERNAL TOOL INITIALIZATION
 # =============================================================================
-# this file will be always run in tmux (guaranteed by .zprofile)
-# so $TERM_PROGRAM will always be != "Apple_Terminal"
-# if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+eval "$(mise activate zsh)"
+eval "$(fzf --zsh)"
 eval "$(oh-my-posh init zsh --config ${XDG_CONFIG_HOME}/ohmyposh/config.toml)"
-# fi
+
 # zprof
+
+# Handle backspace in vim visual mode
+bindkey '^?' backward-delete-char
 

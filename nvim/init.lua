@@ -30,6 +30,15 @@ vim.opt.foldenable = true
 vim.opt.eol = true
 vim.opt.fixeol = true
 
+vim.opt.scrolloff = 3
+vim.opt.mouse = ""
+
+vim.opt.shada = ""
+
+vim.opt.autoread = true
+vim.opt.autowrite = true
+vim.opt.autowriteall = true
+
 require("config.lazy")
 require("config.keymaps")
 
