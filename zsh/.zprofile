@@ -14,7 +14,7 @@ export PAGER=bat
 
 export AWS_SHARED_CREDENTIALS_FILE="${XDG_CONFIG_HOME}/aws/credentials"
 export AWS_CONFIG_FILE="${XDG_CONFIG_HOME}/aws/config"
-export KUBECONFIG="${XDG_CONFIG_HOME}/kube/config" 
+export KUBECONFIG="${XDG_CONFIG_HOME}/kube/config"
 export DOCKER_CONFIG="${XDG_CONFIG_HOME}/docker"
 
 export WINEPREFIX="${XDG_DATA_HOME}/wine"
@@ -25,8 +25,7 @@ export KUBECACHEDIR="${XDG_CACHE_HOME}/kube"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-if [[ -z ${TMUX} && ${TERM} != screen && -z "${KITTY_WINDOW_ID}" && "${TERMINAL_EMULATOR}" != "JetBrains-JediTerm" ]]; then
-    exec tmux new-session -A -s main
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+    exec tmux new-session -A -s main${GHOSTTY_QUICK_TERMINAL:+-quick}-terminal
 fi
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-
